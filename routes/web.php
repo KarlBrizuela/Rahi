@@ -14,7 +14,94 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login.login');
+    $clientIp = request()->ip();
+    $macAddress = null;
+
+    if (in_array($clientIp, ['127.0.0.1', '::1', 'localhost'])) {
+        $output = [];
+        @exec('ipconfig /all', $output);
+        foreach ($output as $line) {
+            if (preg_match('/Physical Address[ .:]+([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                break;
+            }
+        }
+    } else {
+        $output = [];
+        @exec("arp -a " . escapeshellarg($clientIp), $output);
+        foreach ($output as $line) {
+            if (preg_match('/([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                break;
+            }
+        }
+
+        if (!$macAddress) {
+            $output = [];
+            @exec("arp -a", $output);
+            foreach ($output as $line) {
+                if (strpos($line, $clientIp) !== false) {
+                    if (preg_match('/([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                        $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return view('auth.login.login', compact('macAddress', 'clientIp'));
+})->name('login');
+
+Route::match(['GET', 'POST'], '/logout', function () {
+    if (session()) {
+        session()->flush();
+        session()->regenerateToken();
+    }
+    return redirect()->route('login');
+})->name('logout');
+
+Route::get('/api/device-mac', function () {
+    $clientIp = request()->ip();
+    $macAddress = null;
+
+    if (in_array($clientIp, ['127.0.0.1', '::1', 'localhost'])) {
+        $output = [];
+        @exec('ipconfig /all', $output);
+        foreach ($output as $line) {
+            if (preg_match('/Physical Address[ .:]+([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                break;
+            }
+        }
+    } else {
+        $output = [];
+        @exec("arp -a " . escapeshellarg($clientIp), $output);
+        foreach ($output as $line) {
+            if (preg_match('/([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                break;
+            }
+        }
+
+        if (!$macAddress) {
+            $output = [];
+            @exec("arp -a", $output);
+            foreach ($output as $line) {
+                if (strpos($line, $clientIp) !== false) {
+                    if (preg_match('/([0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2}[:-][0-9A-Fa-f]{2})/', $line, $matches)) {
+                        $macAddress = strtoupper(str_replace('-', ':', $matches[1]));
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return response()->json([
+        'ip' => $clientIp,
+        'mac' => $macAddress,
+    ]);
 });
 
 Route::get('/dashboard', function () {

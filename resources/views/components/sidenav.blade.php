@@ -30,7 +30,7 @@
         </button>
 
         <div class="file-dropdown" id="fileDropdown">
-            <form method="POST">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="dropdown-item logout-item">
                     <i data-lucide="log-out"></i>

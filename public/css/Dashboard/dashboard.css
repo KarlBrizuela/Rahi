@@ -244,19 +244,263 @@ body.sidebar-collapsed .main-content,
     color: var(--text-faint);
 }
 
-.filter-reset-btn {
+.btn-filter-reset {
     background: transparent;
-    border: none;
-    font-size: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0 10px;
+    height: 30px;
+    font-size: 11.5px;
+    font-weight: 500;
     color: var(--text-muted);
     cursor: pointer;
-    padding: 0 6px;
-    text-decoration: underline;
-    transition: color 0.12s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
 
-.filter-reset-btn:hover {
-    color: var(--accent-primary);
+.btn-filter-reset:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    color: var(--text-primary);
+}
+
+.btn-filter-reset svg {
+    width: 12px;
+    height: 12px;
+}
+
+.analytics-graph-card {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.graph-header-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.graph-legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+.legend-actual {
+    background: var(--accent-primary);
+}
+
+.legend-quota {
+    width: 16px;
+    height: 0;
+    border-top: 2px dashed #94a3b8;
+}
+
+.graph-kpi-headline {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.headline-primary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.headline-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.headline-value-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headline-value {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.headline-sub-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.trend-pill-positive {
+    color: var(--status-success-text);
+    font-weight: 600;
+}
+
+.headline-separator {
+    color: var(--text-faint);
+}
+
+.chart-canvas-container {
+    position: relative;
+    width: 100%;
+    margin: 8px 0 4px 0;
+}
+
+.performance-chart-svg {
+    width: 100%;
+    height: 200px;
+    display: block;
+    overflow: visible;
+}
+
+.chart-grid-line {
+    stroke: #f1f5f9;
+    stroke-width: 1;
+}
+
+.chart-grid-base {
+    stroke: #e2e8f0;
+    stroke-width: 1;
+}
+
+.chart-quota-line {
+    stroke: #94a3b8;
+    stroke-width: 1.5;
+    stroke-dasharray: 4, 4;
+}
+
+.chart-axis-label {
+    font-family: inherit;
+    font-size: 10.5px;
+    fill: #94a3b8;
+    text-anchor: end;
+    font-variant-numeric: tabular-nums;
+}
+
+.chart-col-label {
+    font-family: inherit;
+    font-size: 11px;
+    fill: #64748b;
+    text-anchor: middle;
+}
+
+.chart-col-active {
+    fill: #2563eb;
+    font-weight: 600;
+}
+
+.chart-bar {
+    fill: #93c5fd;
+    cursor: pointer;
+    transition: fill 0.15s ease;
+}
+
+.chart-bar:hover {
+    fill: #2563eb;
+}
+
+.chart-bar-active {
+    fill: #2563eb;
+}
+
+.chart-bar-active:hover {
+    fill: #1d4ed8;
+}
+
+.chart-tooltip {
+    position: absolute;
+    display: none;
+    background: #0f172a;
+    color: #ffffff;
+    padding: 7px 11px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+    margin-top: -8px;
+}
+
+.tooltip-month {
+    font-size: 10.5px;
+    color: #94a3b8;
+    margin-bottom: 2px;
+}
+
+.tooltip-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tooltip-meta {
+    font-size: 10.5px;
+    color: #38bdf8;
+    margin-top: 2px;
+}
+
+.chart-checkpoints-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 14px;
+    gap: 16px;
+}
+
+.checkpoint-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.checkpoint-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.checkpoint-val {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.checkpoint-sub {
+    font-size: 11px;
+    color: var(--text-muted);
 }
 
 .kpi-strip {
@@ -411,11 +655,17 @@ body.sidebar-collapsed .main-content,
 .dept-summary-item {
     border: 1px solid var(--border-subtle);
     border-radius: 6px;
-    padding: 10px 14px;
+    padding: 12px 14px;
     background: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: border-color 0.12s ease, background 0.12s ease;
+}
+
+.dept-summary-item:hover {
+    border-color: #cbd5e1;
+    background: #fafbfc;
 }
 
 .dept-header {
@@ -435,7 +685,7 @@ body.sidebar-collapsed .main-content,
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin: 4px 0;
+    margin: 4px 0 6px 0;
 }
 
 .dept-stat-main {
@@ -460,12 +710,26 @@ body.sidebar-collapsed .main-content,
     border-top: 1px solid var(--border-subtle);
     padding-top: 6px;
     margin-top: 2px;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.dept-footer span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .dept-link {
     color: var(--accent-primary);
     text-decoration: none;
     font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.dept-link:hover {
+    text-decoration: underline;
 }
 
 .dept-link:hover {
@@ -658,6 +922,9 @@ body.sidebar-collapsed .main-content,
     .dashboard-middle-grid {
         grid-template-columns: 1fr;
     }
+    .chart-checkpoints-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .kpi-strip {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -674,6 +941,9 @@ body.sidebar-collapsed .main-content,
     .dashboard-container {
         padding: 16px;
         gap: 14px;
+    }
+    .chart-checkpoints-row {
+        grid-template-columns: 1fr;
     }
     .kpi-strip {
         grid-template-columns: 1fr;

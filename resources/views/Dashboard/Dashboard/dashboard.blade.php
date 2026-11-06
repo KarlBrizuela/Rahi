@@ -60,67 +60,132 @@
                 <strong>Main Production Plant</strong>
                 <i data-lucide="chevron-down" class="filter-chevron"></i>
             </div>
-            <button type="button" class="filter-reset-btn" onclick="window.location.reload()">Reset Filters</button>
+            <button type="button" class="btn-filter-reset" id="btnResetFilters" onclick="window.location.reload()">
+                <i data-lucide="rotate-ccw"></i>
+                <span>Reset Filters</span>
+            </button>
         </div>
 
-        <div class="kpi-strip">
-            <div class="kpi-cell">
-                <div class="kpi-header">
-                    <span class="kpi-title">Revenue (MTD)</span>
-                    <span class="kpi-trend">+12.4% vs last mo.</span>
+        <div class="erp-card analytics-graph-card">
+            <div class="card-header-row">
+                <div>
+                    <div class="card-title">Enterprise Performance & Revenue Trend</div>
+                    <div class="card-subtitle">Monthly revenue progression vs target quota (₱ 15.0M) across all operational modules</div>
                 </div>
-                <div class="kpi-value">₱ 14,820,500.00</div>
-                <div class="kpi-meta">
-                    <span class="status-badge success">
-                        <span class="status-dot"></span>
-                        <span>On target</span>
-                    </span>
-                    <span>94.2% quota</span>
-                </div>
-            </div>
-
-            <div class="kpi-cell">
-                <div class="kpi-header">
-                    <span class="kpi-title">Active Production</span>
-                    <span class="kpi-trend">97.8% yield</span>
-                </div>
-                <div class="kpi-value font-numeric">18 Runs</div>
-                <div class="kpi-meta">
-                    <span class="status-badge success">
-                        <span class="status-dot"></span>
-                        <span>Operational</span>
-                    </span>
-                    <span class="font-numeric">94,850 good units</span>
+                <div class="graph-header-controls">
+                    <div class="graph-legend">
+                        <span class="legend-item">
+                            <span class="legend-swatch legend-actual"></span>
+                            <span>Actual Revenue</span>
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-swatch legend-quota"></span>
+                            <span>Quota (₱ 15M)</span>
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <div class="kpi-cell">
-                <div class="kpi-header">
-                    <span class="kpi-title">Warehouse Inventory</span>
-                    <span class="kpi-trend neutral">42 Active Bins</span>
+            <div class="graph-kpi-headline">
+                <div class="headline-primary">
+                    <span class="headline-label">Current Revenue MTD</span>
+                    <div class="headline-value-group">
+                        <span class="headline-value font-numeric">₱ 14,820,500.00</span>
+                        <span class="status-badge success">
+                            <span class="status-dot"></span>
+                            <span>94.2% Quota Met</span>
+                        </span>
+                    </div>
                 </div>
-                <div class="kpi-value">₱ 8,450,200.00</div>
-                <div class="kpi-meta">
-                    <span class="status-badge warn">
-                        <span class="status-dot"></span>
-                        <span>Reorder alert</span>
-                    </span>
-                    <span>2 items critical</span>
+                <div class="headline-sub-info">
+                    <span class="trend-pill-positive">+12.4% vs last month</span>
+                    <span class="headline-separator">·</span>
+                    <span>Target: ₱ 15,000,000.00</span>
+                    <span class="headline-separator">·</span>
+                    <span>₱ 179,500.00 to monthly target</span>
                 </div>
             </div>
 
-            <div class="kpi-cell">
-                <div class="kpi-header">
-                    <span class="kpi-title">Open Procurement</span>
-                    <span class="kpi-trend neutral">6 POs in transit</span>
+            <div class="chart-canvas-container">
+                <svg viewBox="0 0 940 210" class="performance-chart-svg" preserveAspectRatio="none">
+                    <line x1="55" y1="20" x2="930" y2="20" class="chart-grid-line" />
+                    <text x="45" y="24" class="chart-axis-label">₱16M</text>
+
+                    <line x1="55" y1="60" x2="930" y2="60" class="chart-grid-line" />
+                    <text x="45" y="64" class="chart-axis-label">₱12M</text>
+
+                    <line x1="55" y1="100" x2="930" y2="100" class="chart-grid-line" />
+                    <text x="45" y="104" class="chart-axis-label">₱8M</text>
+
+                    <line x1="55" y1="140" x2="930" y2="140" class="chart-grid-line" />
+                    <text x="45" y="144" class="chart-axis-label">₱4M</text>
+
+                    <line x1="55" y1="180" x2="930" y2="180" class="chart-grid-base" />
+                    <text x="45" y="184" class="chart-axis-label">₱0</text>
+
+                    <line x1="55" y1="30" x2="930" y2="30" class="chart-quota-line" />
+
+                    <rect x="75" y="78" width="42" height="102" rx="4" class="chart-bar" data-month="January" data-val="₱ 10,200,000.00" data-pct="68.0%" />
+                    <text x="96" y="198" class="chart-col-label">Jan</text>
+
+                    <rect x="153" y="66" width="42" height="114" rx="4" class="chart-bar" data-month="February" data-val="₱ 11,400,000.00" data-pct="76.0%" />
+                    <text x="174" y="198" class="chart-col-label">Feb</text>
+
+                    <rect x="231" y="52" width="42" height="128" rx="4" class="chart-bar" data-month="March" data-val="₱ 12,800,000.00" data-pct="85.3%" />
+                    <text x="252" y="198" class="chart-col-label">Mar</text>
+
+                    <rect x="309" y="49" width="42" height="131" rx="4" class="chart-bar" data-month="April" data-val="₱ 13,100,000.00" data-pct="87.3%" />
+                    <text x="330" y="198" class="chart-col-label">Apr</text>
+
+                    <rect x="387" y="54" width="42" height="126" rx="4" class="chart-bar" data-month="May" data-val="₱ 12,600,000.00" data-pct="84.0%" />
+                    <text x="408" y="198" class="chart-col-label">May</text>
+
+                    <rect x="465" y="41" width="42" height="139" rx="4" class="chart-bar" data-month="June" data-val="₱ 13,900,000.00" data-pct="92.7%" />
+                    <text x="486" y="198" class="chart-col-label">Jun</text>
+
+                    <rect x="543" y="45" width="42" height="135" rx="4" class="chart-bar" data-month="July" data-val="₱ 13,500,000.00" data-pct="90.0%" />
+                    <text x="564" y="198" class="chart-col-label">Jul</text>
+
+                    <rect x="621" y="38" width="42" height="142" rx="4" class="chart-bar" data-month="August" data-val="₱ 14,200,000.00" data-pct="94.7%" />
+                    <text x="642" y="198" class="chart-col-label">Aug</text>
+
+                    <rect x="699" y="42" width="42" height="138" rx="4" class="chart-bar" data-month="September" data-val="₱ 13,800,000.00" data-pct="92.0%" />
+                    <text x="720" y="198" class="chart-col-label">Sep</text>
+
+                    <rect x="777" y="36" width="42" height="144" rx="4" class="chart-bar" data-month="October" data-val="₱ 14,400,000.00" data-pct="96.0%" />
+                    <text x="798" y="198" class="chart-col-label">Oct</text>
+
+                    <rect x="855" y="32" width="42" height="148" rx="4" class="chart-bar chart-bar-active" data-month="November (MTD)" data-val="₱ 14,820,500.00" data-pct="94.2%" />
+                    <text x="876" y="198" class="chart-col-label chart-col-active">Nov (MTD)</text>
+                </svg>
+
+                <div class="chart-tooltip" id="chartTooltip">
+                    <div class="tooltip-month" id="ttMonth">November (MTD)</div>
+                    <div class="tooltip-value font-numeric" id="ttVal">₱ 14,820,500.00</div>
+                    <div class="tooltip-meta" id="ttPct">94.2% of ₱ 15M Quota</div>
                 </div>
-                <div class="kpi-value font-numeric">₱ 3,190,400.00</div>
-                <div class="kpi-meta">
-                    <span class="status-badge neutral">
-                        <span class="status-dot"></span>
-                        <span>Committed</span>
-                    </span>
-                    <span>Avg delivery 3.2d</span>
+            </div>
+
+            <div class="chart-checkpoints-row">
+                <div class="checkpoint-item">
+                    <span class="checkpoint-label">ACTIVE PRODUCTION</span>
+                    <span class="checkpoint-val font-numeric">94,850 Units</span>
+                    <span class="checkpoint-sub">97.8% yield · 18 active runs</span>
+                </div>
+                <div class="checkpoint-item">
+                    <span class="checkpoint-label">WAREHOUSE VALUATION</span>
+                    <span class="checkpoint-val font-numeric">₱ 8,450,200.00</span>
+                    <span class="checkpoint-sub">42 active bins · 2 critical</span>
+                </div>
+                <div class="checkpoint-item">
+                    <span class="checkpoint-label">OPEN PROCUREMENT</span>
+                    <span class="checkpoint-val font-numeric">₱ 3,190,400.00</span>
+                    <span class="checkpoint-sub">6 POs committed · 3.2d lead</span>
+                </div>
+                <div class="checkpoint-item">
+                    <span class="checkpoint-label">ORDER FULFILLMENT</span>
+                    <span class="checkpoint-val font-numeric">96.1%</span>
+                    <span class="checkpoint-sub">128 orders · 14.82M bookings</span>
                 </div>
             </div>
         </div>
@@ -128,8 +193,10 @@
         <div class="dashboard-middle-grid">
             <div class="erp-card">
                 <div class="card-header-row">
-                    <div class="card-title">Department Operational Health</div>
-                    <div class="card-subtitle">Performance breakdown across core modules</div>
+                    <div>
+                        <div class="card-title">Department Operational Health</div>
+                        <div class="card-subtitle">Performance breakdown across core modules</div>
+                    </div>
                 </div>
 
                 <div class="dept-summary-grid">
@@ -138,15 +205,14 @@
                             <span class="dept-title">Sales & Commercial</span>
                             <span class="status-badge success">
                                 <span class="status-dot"></span>
-                                <span>Active</span>
+                                <span>94.2% Quota</span>
                             </span>
                         </div>
                         <div class="dept-stat-row">
                             <span class="dept-stat-main font-numeric">128 Orders</span>
-                            <span class="dept-stat-sub">₱ 14.82M Total</span>
                         </div>
                         <div class="dept-footer">
-                            <span>Fulfillment rate: 96.1%</span>
+                            <span>₱ 14.82M · 96.1% fulfillment</span>
                             <a href="{{ route('salesorder') }}" class="dept-link">View Sales →</a>
                         </div>
                     </div>
@@ -156,15 +222,14 @@
                             <span class="dept-title">Production & Assembly</span>
                             <span class="status-badge success">
                                 <span class="status-dot"></span>
-                                <span>Operational</span>
+                                <span>97.8% Yield</span>
                             </span>
                         </div>
                         <div class="dept-stat-row">
                             <span class="dept-stat-main font-numeric">94,850 Units</span>
-                            <span class="dept-stat-sub">Scrap: 1.5%</span>
                         </div>
                         <div class="dept-footer">
-                            <span>SMT Line 01 & 02 active</span>
+                            <span>SMT Line active · 1.5% scrap</span>
                             <a href="{{ route('production.output.index') }}" class="dept-link">View Production →</a>
                         </div>
                     </div>
@@ -174,15 +239,14 @@
                             <span class="dept-title">Warehouse & Logistics</span>
                             <span class="status-badge warn">
                                 <span class="status-dot"></span>
-                                <span>Stock Warning</span>
+                                <span>2 Stock Alerts</span>
                             </span>
                         </div>
                         <div class="dept-stat-row">
                             <span class="dept-stat-main font-numeric">28,218 Units</span>
-                            <span class="dept-stat-sub">42 Storage Bins</span>
                         </div>
                         <div class="dept-footer">
-                            <span>PET Film near threshold</span>
+                            <span>42 bins · PET Film threshold</span>
                             <a href="{{ route('warehouse.supplies.stock') }}" class="dept-link">View Warehouse →</a>
                         </div>
                     </div>
@@ -196,11 +260,10 @@
                             </span>
                         </div>
                         <div class="dept-stat-row">
-                            <span class="dept-stat-main font-numeric">₱ 3.19M</span>
-                            <span class="dept-stat-sub">8 Suppliers</span>
+                            <span class="dept-stat-main font-numeric">₱ 3,190,400.00</span>
                         </div>
                         <div class="dept-footer">
-                            <span>Sumitomo order confirmed</span>
+                            <span>8 suppliers · Sumitomo shipment</span>
                             <a href="{{ route('purchasing.po.index') }}" class="dept-link">View Purchasing →</a>
                         </div>
                     </div>
@@ -209,7 +272,10 @@
 
             <div class="erp-card">
                 <div class="card-header-row">
-                    <div class="card-title">Operational Alerts</div>
+                    <div>
+                        <div class="card-title">Operational Alerts</div>
+                        <div class="card-subtitle">Pending system exceptions</div>
+                    </div>
                     <span class="status-badge warn">
                         <span class="status-dot"></span>
                         <span>3 Pending</span>
@@ -412,6 +478,38 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    const chartBars = document.querySelectorAll('.chart-bar');
+    const tooltip = document.getElementById('chartTooltip');
+    const ttMonth = document.getElementById('ttMonth');
+    const ttVal = document.getElementById('ttVal');
+    const ttPct = document.getElementById('ttPct');
+    const chartContainer = document.querySelector('.chart-canvas-container');
+
+    if (tooltip && chartContainer) {
+        chartBars.forEach(function (bar) {
+            bar.addEventListener('mouseenter', function () {
+                const month = bar.getAttribute('data-month');
+                const val = bar.getAttribute('data-val');
+                const pct = bar.getAttribute('data-pct');
+
+                if (ttMonth) ttMonth.textContent = month;
+                if (ttVal) ttVal.textContent = val;
+                if (ttPct) ttPct.textContent = pct + ' of ₱ 15M Quota';
+
+                const barRect = bar.getBoundingClientRect();
+                const containerRect = chartContainer.getBoundingClientRect();
+
+                tooltip.style.left = (barRect.left + barRect.width / 2 - containerRect.left) + 'px';
+                tooltip.style.top = (barRect.top - containerRect.top) + 'px';
+                tooltip.style.display = 'block';
+            });
+
+            bar.addEventListener('mouseleave', function () {
+                tooltip.style.display = 'none';
+            });
+        });
+    }
 
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
         window.lucide.createIcons();

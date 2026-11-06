@@ -46,12 +46,12 @@
     flex-direction: column;
     align-items: center;
     width: 55vh;
-    padding: 20px;
-    
+    padding: 24px 20px;
     border-radius: 8px;
     gap: 20px;
-    background-color:white;
-    box-shadow: 2px 6px 12px rgba(0, 0, 0, 0.15)
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.07), 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .form-group {
@@ -97,4 +97,45 @@
     border:none;
     cursor:pointer;
     width: auto;
+}
+
+.mac-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.device-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.device-status-badge.detected {
+    color: #059669;
+}
+
+.device-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94a3b8;
+}
+
+.device-status-badge.detected .device-status-dot {
+    background: #10b981;
+}
+
+.mac-input {
+    background-color: #f8fafc !important;
+    color: #334155;
+    font-family: inherit;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    cursor: default;
 }

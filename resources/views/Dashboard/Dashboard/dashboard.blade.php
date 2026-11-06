@@ -69,20 +69,8 @@
         <div class="erp-card analytics-graph-card">
             <div class="card-header-row">
                 <div>
-                    <div class="card-title">Enterprise Performance & Revenue Trend</div>
-                    <div class="card-subtitle">Monthly revenue progression vs target quota (₱ 15.0M) across all operational modules</div>
-                </div>
-                <div class="graph-header-controls">
-                    <div class="graph-legend">
-                        <span class="legend-item">
-                            <span class="legend-swatch legend-actual"></span>
-                            <span>Actual Revenue</span>
-                        </span>
-                        <span class="legend-item">
-                            <span class="legend-swatch legend-quota"></span>
-                            <span>Quota (₱ 15M)</span>
-                        </span>
-                    </div>
+                    <div class="card-title">Revenue Trend</div>
+                    <div class="card-subtitle">Monthly revenue progression</div>
                 </div>
             </div>
 
@@ -93,16 +81,12 @@
                         <span class="headline-value font-numeric">₱ 14,820,500.00</span>
                         <span class="status-badge success">
                             <span class="status-dot"></span>
-                            <span>94.2% Quota Met</span>
+                            <span>94.2% Quota</span>
                         </span>
                     </div>
                 </div>
                 <div class="headline-sub-info">
                     <span class="trend-pill-positive">+12.4% vs last month</span>
-                    <span class="headline-separator">·</span>
-                    <span>Target: ₱ 15,000,000.00</span>
-                    <span class="headline-separator">·</span>
-                    <span>₱ 179,500.00 to monthly target</span>
                 </div>
             </div>
 
@@ -165,40 +149,17 @@
                     <div class="tooltip-meta" id="ttPct">94.2% of ₱ 15M Quota</div>
                 </div>
             </div>
-
-            <div class="chart-checkpoints-row">
-                <div class="checkpoint-item">
-                    <span class="checkpoint-label">ACTIVE PRODUCTION</span>
-                    <span class="checkpoint-val font-numeric">94,850 Units</span>
-                    <span class="checkpoint-sub">97.8% yield · 18 active runs</span>
-                </div>
-                <div class="checkpoint-item">
-                    <span class="checkpoint-label">WAREHOUSE VALUATION</span>
-                    <span class="checkpoint-val font-numeric">₱ 8,450,200.00</span>
-                    <span class="checkpoint-sub">42 active bins · 2 critical</span>
-                </div>
-                <div class="checkpoint-item">
-                    <span class="checkpoint-label">OPEN PROCUREMENT</span>
-                    <span class="checkpoint-val font-numeric">₱ 3,190,400.00</span>
-                    <span class="checkpoint-sub">6 POs committed · 3.2d lead</span>
-                </div>
-                <div class="checkpoint-item">
-                    <span class="checkpoint-label">ORDER FULFILLMENT</span>
-                    <span class="checkpoint-val font-numeric">96.1%</span>
-                    <span class="checkpoint-sub">128 orders · 14.82M bookings</span>
-                </div>
-            </div>
         </div>
 
-        <div class="dashboard-middle-grid">
-            <div class="erp-card">
-                <div class="card-header-row">
-                    <div>
-                        <div class="card-title">Department Operational Health</div>
-                        <div class="card-subtitle">Performance breakdown across core modules</div>
-                    </div>
+        <div class="erp-card dept-overview-card">
+            <div class="card-header-row">
+                <div>
+                    <div class="card-title">Department Operational Health</div>
+                    <div class="card-subtitle">Performance breakdown across core modules</div>
                 </div>
+            </div>
 
+            <div class="dept-summary-scroll">
                 <div class="dept-summary-grid">
                     <div class="dept-summary-item">
                         <div class="dept-header">
@@ -266,48 +227,6 @@
                             <span>8 suppliers · Sumitomo shipment</span>
                             <a href="{{ route('purchasing.po.index') }}" class="dept-link">View Purchasing →</a>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="erp-card">
-                <div class="card-header-row">
-                    <div>
-                        <div class="card-title">Operational Alerts</div>
-                        <div class="card-subtitle">Pending system exceptions</div>
-                    </div>
-                    <span class="status-badge warn">
-                        <span class="status-dot"></span>
-                        <span>3 Pending</span>
-                    </span>
-                </div>
-
-                <div class="feed-list">
-                    <div class="feed-item">
-                        <div class="feed-header">
-                            <span class="feed-title">Safety Stock Threshold</span>
-                            <span class="feed-time">14m ago</span>
-                        </div>
-                        <p class="feed-desc">PET Insulation Film 0.05mm is below safety replenishment level (2,800 units).</p>
-                        <a href="{{ route('purchasing.pr.index') }}" class="feed-link">Create Purchase Request →</a>
-                    </div>
-
-                    <div class="feed-item">
-                        <div class="feed-header">
-                            <span class="feed-title">Lot Inspection Completed</span>
-                            <span class="feed-time">1h ago</span>
-                        </div>
-                        <p class="feed-desc">Production Output WO-2026-0814 ready for finished goods transfer.</p>
-                        <a href="{{ route('production.fgts.index') }}" class="feed-link">Generate FGTS →</a>
-                    </div>
-
-                    <div class="feed-item">
-                        <div class="feed-header">
-                            <span class="feed-title">Order Engineering Review</span>
-                            <span class="feed-time">3h ago</span>
-                        </div>
-                        <p class="feed-desc">SO-2026-0044 awaiting dimensional validation from technical team.</p>
-                        <a href="{{ route('salesorder') }}" class="feed-link">Review Order →</a>
                     </div>
                 </div>
             </div>

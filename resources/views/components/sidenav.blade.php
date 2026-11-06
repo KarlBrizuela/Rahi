@@ -3,12 +3,12 @@
 <aside class="sidenav">
 
     <div class="header-nav">
-        <div class="logo-nav">
+        <a href="{{ route('dashboard') }}" class="logo-nav" title="Intracode ERP">
             <img src="{{ asset('fav/fav.png') }}" alt="Logo">
             <div class="brand-text">
                 <h3>Intracode ERP</h3>
             </div>
-        </div>
+        </a>
 
         <button type="button" class="collapse-btn" title="Toggle Sidebar">
             <i data-lucide="panel-left"></i>
